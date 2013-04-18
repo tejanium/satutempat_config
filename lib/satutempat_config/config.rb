@@ -9,6 +9,10 @@ module Satutempat
       string.field :description
     end
 
+    with_options presence: true do |presence|
+      presence.validates :key, format: /\A[a-zA-Z]+[\w_.]*\z/
+    end
+
     def self.set key, value, description=''
       (get(key) || new(key: key)).tap do |config|
         config.value       = value
@@ -16,13 +20,31 @@ module Satutempat
       end.save
     end
 
-
     def self.get key
-      where(key: key).first rescue nil
+      where(key: key).first
     end
 
     def self.import file_path
       create_from_hash YAML.load_file file_path
+    end
+
+    def self.export file_destination
+      File.open(file_destination, 'w') do |out|
+        YAML.dump to_hash, out
+      end
+    end
+
+    def self.to_hash
+      all.to_a.map(&:to_hash).inject(&:deep_merge)
+    end
+
+    def to_hash
+      inversed_keys = key.split('.').reverse
+      hash          = { inversed_keys.shift => value }
+
+      inversed_keys.inject(hash) do |memo, namespaced_key|
+        { namespaced_key => memo }
+      end
     end
 
     private

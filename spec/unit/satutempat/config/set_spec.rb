@@ -42,5 +42,27 @@ describe Satutempat::Config do
       end
     end
 
+    context 'invalid' do
+      ['title title', '12title'].each do |invalid_key|
+        it "key is #{ invalid_key }" do
+          lambda{
+            Satutempat::Config.set(invalid_key, 'This is new value')
+          }.should_not change { Satutempat::Config.count }
+        end
+      end
+
+      it 'has no key' do
+        lambda{
+          Satutempat::Config.set(nil, 'This is new value')
+        }.should_not change { Satutempat::Config.count }
+      end
+
+      it 'has no key' do
+        lambda{
+          Satutempat::Config.set(nil, 'This is new value')
+        }.should_not change { Satutempat::Config.count }
+      end
+    end
+
   end
 end
