@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'satutempat_config'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.summary     = 'SatuTempat Configuration'
   s.description = 'Gem to store all the SatuTempat Websites configuration'
   s.authors     = ['Teja Sophista']
