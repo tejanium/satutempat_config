@@ -14,14 +14,18 @@ module Satutempat
     end
 
     def self.set key, value, description=''
-      (get(key) || new(key: key)).tap do |config|
+      (get_instance(key) || new(key: key)).tap do |config|
         config.value       = value
         config.description = description
       end.save
     end
 
-    def self.get key
+    def self.get_instance key
       where(key: key).first
+    end
+
+    def self.get key
+      get_instance(key).try :value
     end
 
     def self.import file_path

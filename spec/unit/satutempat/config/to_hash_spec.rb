@@ -16,7 +16,7 @@ describe Satutempat::Config do
           }
         }
 
-        Satutempat::Config.get('en.email.title').to_hash.should eq hash
+        Satutempat::Config.get_instance('en.email.title').to_hash.should eq hash
       end
     end
 

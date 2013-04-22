@@ -1,9 +1,10 @@
 PATH
   remote: .
   specs:
-    satutempat_config (0.0.1)
+    satutempat_config (0.0.2.1)
       bson_ext
       mongoid (= 2.4.7)
+      mongoid (~> 2.4.7)
 
 GEM
   remote: https://rubygems.org/
