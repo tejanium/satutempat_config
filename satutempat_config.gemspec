@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'satutempat_config'
-  s.version     = '0.0.2'
+  s.version     = '0.0.2.1'
   s.summary     = 'SatuTempat Configuration'
   s.description = 'Gem to store all the SatuTempat Websites configuration'
   s.authors     = ['Teja Sophista']
@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'debugger'
 
-  s.add_runtime_dependency 'mongoid', '2.4.7'
+  s.add_runtime_dependency 'mongoid', '~> 2.4.7'
   s.add_runtime_dependency 'bson_ext'
 end
